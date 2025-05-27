@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+</head>
+<body>
+    <h1>Books</h1>
+
+    <a href="/books" class="btn btn-secondary">Autores</a>
+    <ul>
+        {% for book in livros %}
+        <li>{{ book.title }}
+            <form method="POST" action="/delete/{{ book.id }}">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <form method="POST" action="/add">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="text" name="author_id" placeholder="Author_id" required>
+        <button type="submit">Add Book</button>
+    </form>
+</body>
+</html>
